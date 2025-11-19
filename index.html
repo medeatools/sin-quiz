@@ -2,7 +2,7 @@
 <html lang="es">
    <head>
       <meta charset="UTF-8" />
-      <title>Test Futbolero</title>
+      <title>Test del Pecado</title>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <style>
          body {
@@ -85,7 +85,7 @@
    </head>
    <body>
       <div class="card">
-         <h1>Test Futbolero</h1>
+         <h1>Test del Pecado</h1>
          <div id="question"></div>
          <div id="answers"></div>
          <img id="resultImage" alt="Resultado" />
@@ -98,40 +98,19 @@
          const nodes = {
            start: {
              type: "question",
-             text: "¿Te gusta el fútbol?",
+             text: "¿Usted ha pecado?",
              options: [
-               { text: "Sí", next: "teamQuestion" },
-               { text: "No", next: "noSoccer" }
+               { text: "Sí", next: "wip1" },
+               { text: "No", next: "wip2" }
              ]
            },
-           teamQuestion: {
-             type: "question",
-             text: "¿De qué cuadro sos?",
-             options: [
-               { text: "River Plate", next: "riverResult" },
-               { text: "Boca Juniors", next: "bocaResult" },
-               { text: "Otro / ninguno", next: "otherResult" }
-             ]
-           },
-           noSoccer: {
+           wip1: {
              type: "result",
-             text: "Ok, el fútbol no es lo tuyo 😅",
-             image: "img/no-futbol.png" // opcional, poné la tuya
+             text: "Work in progress...",
            },
-           bocaResult: {
+           wip2: {
              type: "result",
-             text: "¡Bostero culo roto llevas la pija de River incrustada de por vida! 💙💛",
-             image: "img/boca.png" // poné tu escudo acá
-           },
-           riverResult: {
-             type: "result",
-             text: "¡Gallina pero con estilo! ❤️🤍",
-             image: "img/river.png"
-           },
-           otherResult: {
-             type: "result",
-             text: "¡Aguante el fulbo igual! ⚽",
-             image: "img/otro-club.png"
+             text: "Work in progress...",
            }
          };
          
