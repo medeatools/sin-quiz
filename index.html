@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Preguntas Futboleras</title>
+  <title>Test Futbolero</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     body {
@@ -12,9 +12,11 @@
       margin: 0;
       padding: 0;
       display: flex;
-      min-height: 100vh;
+      flex-direction: column;      /* Card arriba, logo abajo */
       align-items: center;
       justify-content: center;
+      min-height: 100vh;
+      gap: 16px;                   /* separación entre card y logo */
     }
     .card {
       background: #1f2937;
@@ -70,6 +72,14 @@
       color: #9ca3af;
       cursor: pointer;
       text-decoration: underline;
+      display: none;
+    }
+    .logo {
+      margin-top: 8px;
+      max-width: 120px;
+      opacity: 0.9;
+      display: block;
+      filter: drop-shadow(0 4px 10px rgba(0,0,0,0.4));
     }
   </style>
 </head>
@@ -79,8 +89,11 @@
     <div id="question"></div>
     <div id="answers"></div>
     <img id="resultImage" alt="Resultado" />
-    <div id="restart" style="display:none;">Volver a empezar</div>
+    <div id="restart">Volver a empezar</div>
   </div>
+
+  <!-- Logo debajo del cuadro -->
+  <img class="logo" src="img/cupulaLogo.png" alt="Logo" />
 
   <script>
     // --- Árbol de decisiones ---
@@ -105,7 +118,7 @@
       noSoccer: {
         type: "result",
         text: "Ok, el fútbol no es lo tuyo 😅",
-        image: "img/no-futbol.png" // cambiá por una imagen tuya
+        image: "img/no-futbol.png" // opcional, poné la tuya
       },
       bocaResult: {
         type: "result",
@@ -115,12 +128,12 @@
       riverResult: {
         type: "result",
         text: "¡Gallina pero con estilo! ❤️🤍",
-        image: "img/river.png" // poné tu escudo acá
+        image: "img/river.png"
       },
       otherResult: {
         type: "result",
         text: "¡Aguante el fulbo igual! ⚽",
-        image: "img/otro-club.png" // otra imagen genérica
+        image: "img/otro-club.png"
       }
     };
 
@@ -135,7 +148,6 @@
       const node = nodes[nodeId];
       currentNodeId = nodeId;
 
-      // Ocultar imagen y botón de reinicio por defecto
       resultImageEl.style.display = "none";
       restartEl.style.display = "none";
 
@@ -146,7 +158,6 @@
       }
 
       if (node.type === "question") {
-        // Mostrar pregunta
         questionEl.textContent = node.text;
         answersEl.innerHTML = "";
 
@@ -160,7 +171,6 @@
           answersEl.appendChild(btn);
         });
       } else if (node.type === "result") {
-        // Mostrar resultado final con imagen
         questionEl.textContent = node.text;
         answersEl.innerHTML = "";
 
